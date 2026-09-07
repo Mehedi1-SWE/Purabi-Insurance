@@ -148,7 +148,7 @@ export default function Navbar() {
 
         {/* Contact Us */}
         <Link
-          to="/contact"
+          to="/contact-us"
           className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           Contact Us

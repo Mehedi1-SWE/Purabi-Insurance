@@ -16,3 +16,20 @@ body {
   width: 1440px;
   flex-shrink: 0;
 }
+
+/* Keep the existing desktop layout unchanged while pinning both header rows. */
+@media (min-width: 1024px) {
+  .desktop-fixed-header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 1440px;
+    height: 133px;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .desktop-header-offset {
+    padding-top: 133px;
+  }
+}

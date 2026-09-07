@@ -7,10 +7,12 @@ import Topbar from "../../components/shared/Topbar";
 export default function MainLayouts() {
   return (
     <>
-      <Topbar />
-      <Navbar />
+      <div className="desktop-fixed-header">
+        <Topbar />
+        <Navbar />
+      </div>
 
-      <main>
+      <main className="desktop-header-offset">
         <Outlet />
       </main>
 

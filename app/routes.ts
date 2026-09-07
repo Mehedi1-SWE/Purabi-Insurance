@@ -16,4 +16,5 @@ export default [
         route("verify-otp", "./routes/VerifyOtp.tsx"),
         route("Proceed-Otp", "./routes/ProceedOtp.tsx"),
     ]),
+    route("client-portal", "./routes/Clientportallogin.tsx"),
 ] satisfies RouteConfig;

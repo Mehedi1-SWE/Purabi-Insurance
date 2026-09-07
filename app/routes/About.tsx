@@ -639,7 +639,7 @@ export default function AboutSection() {
                                 </>
                             ) : (
                                 <video
-                                    src="/video.mp4"
+                                    src="/Insurance Bank.mp4"
                                     controls
                                     autoPlay
                                     className="absolute inset-0 m-0 block h-full w-full max-w-none object-cover p-0"

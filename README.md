@@ -45,11 +45,56 @@ If you're familiar with deploying Node applications, the built-in app server is 
 Make sure to deploy the output of `npm run build`
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+Purabi-Insurance/
+│
+├── app/
+│   │
+│   ├── routes.ts
+│   │
+│   ├── layouts/
+│   │   └── MainLayouts.tsx
+│   │
+│   └── routes/
+│       ├── Home.tsx
+│       ├── About.tsx
+│       ├── Quote.tsx
+│       ├── AgentPortal.tsx
+│       ├── SignUp.tsx
+│       ├── VerifyOtp.tsx
+│       ├── ProceedOtp.tsx
+│       ├── Clientportallogin.tsx
+│       ├── AgentPortalProfile.tsx
+│       │
+│       ├── Claims.tsx
+│       ├── Blogs.tsx
+│       ├── ContactUs.tsx
+│       ├── TermsAndConditions.tsx
+│       ├── PrivacyPolicy.tsx
+│       └── RefundPolicy.tsx
+│
+├── components/
+│   │
+│   ├── home/
+│   │   ├── Hero.tsx
+│   │   └── WorkingProcess.tsx
+│   │
+│   ├── shared/
+│   │   ├── Topbar.tsx
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   │
+│   ├── Category.tsx
+│   ├── ClaimsTracker.tsx
+│   ├── InsuranceCarousel.tsx
+│   ├── MobileApp.tsx
+│   ├── NewsEvents.tsx
+│   ├── PriceCalculator.tsx
+│   └── TrustedPartners.tsx
+│
+├── public/
+│   └── [সব image file সরাসরি এখানে]
+│
+└── [existing json files]
 ```
 
 ## Styling

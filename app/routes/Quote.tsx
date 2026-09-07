@@ -1,6 +1,27 @@
+import { useState } from "react";
+
+const quoteTypes = [
+    { label: "For Self", image: "/For Self.png" },
+    { label: "For Couple", image: "/For Couple.png" },
+    { label: "For Family", image: "/For Family.png" },
+    { label: "For Parents", image: "/For Parents.png" },
+];
+
 export default function Quote() {
+    const [selectedQuoteType, setSelectedQuoteType] = useState(0);
     return (
         <>
+            <svg aria-hidden="true" className="absolute h-0 w-0 overflow-hidden">
+                <defs>
+                    <filter id="quote-selected-icon" colorInterpolationFilters="sRGB">
+                        <feComponentTransfer>
+                            <feFuncA type="table" tableValues="0 0 1 1" />
+                        </feComponentTransfer>
+                        <feFlood floodColor="#FFFFFF" result="white" />
+                        <feComposite in="white" in2="SourceGraphic" operator="in" />
+                    </filter>
+                </defs>
+            </svg>
             {/* =====================================================
                 BANNER
             ====================================================== */}
@@ -58,62 +79,37 @@ export default function Quote() {
                         <div className="flex h-[109px] w-[630px] justify-center">
 
                             <div className="flex h-[109px] w-[510px] items-start justify-between">
+                                {quoteTypes.map((quoteType, index) => (
+                                    <button
+                                        key={quoteType.label}
+                                        type="button"
+                                        onClick={() => setSelectedQuoteType(index)}
+                                        className="group flex h-[109px] w-[100px] shrink-0 cursor-pointer flex-col items-center gap-[5px] bg-transparent p-0 transition-all duration-300 ease-out hover:-translate-y-[2px]"
+                                    >
+                                        <div
+                                            className={`flex h-[80px] w-[80px] items-center justify-center rounded-full transition-all duration-300 ease-out group-hover:scale-[1.03] ${selectedQuoteType === index ? "bg-[#AC3E25]" : "bg-transparent"
+                                                }`}
+                                        >
+                                            <img
+                                                src={quoteType.image}
+                                                alt={quoteType.label}
+                                                className={`h-[80px] w-[80px] transition-all duration-300 ease-out ${selectedQuoteType === index
+                                                    ? "[filter:url(#quote-selected-icon)]"
+                                                    : ""
+                                                    }`}
+                                            />
+                                        </div>
 
-                                {/* FOR SELF */}
-                                <div className="flex h-[109px] w-[100px] shrink-0 flex-col items-center gap-[5px]">
-                                    <img
-                                        src="/For Self.png"
-                                        alt="For Self"
-                                        className="h-[80px] w-[80px]"
-                                    />
-
-                                    <div className="flex h-[24px] w-[100px] items-center justify-center text-center font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] text-[#AC3E25]">
-                                        For Self
-                                    </div>
-                                </div>
-
-
-                                {/* FOR COUPLE */}
-                                <div className="flex h-[109px] w-[100px] shrink-0 flex-col items-center gap-[5px]">
-                                    <img
-                                        src="/For Couple.png"
-                                        alt="For Couple"
-                                        className="h-[80px] w-[80px]"
-                                    />
-
-                                    <div className="flex h-[24px] w-[100px] items-center justify-center text-center font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] text-[#00000066]">
-                                        For Couple
-                                    </div>
-                                </div>
-
-
-                                {/* FOR FAMILY */}
-                                <div className="flex h-[109px] w-[100px] shrink-0 flex-col items-center gap-[5px]">
-                                    <img
-                                        src="/For Family.png"
-                                        alt="For Family"
-                                        className="h-[80px] w-[80px]"
-                                    />
-
-                                    <div className="flex h-[24px] w-[100px] items-center justify-center text-center font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] text-[#00000066]">
-                                        For Family
-                                    </div>
-                                </div>
-
-
-                                {/* FOR PARENTS */}
-                                <div className="flex h-[109px] w-[100px] shrink-0 flex-col items-center gap-[5px]">
-                                    <img
-                                        src="/For Parents.png"
-                                        alt="For Parents"
-                                        className="h-[80px] w-[80px]"
-                                    />
-
-                                    <div className="flex h-[24px] w-[100px] items-center justify-center text-center font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] text-[#00000066]">
-                                        For Parents
-                                    </div>
-                                </div>
-
+                                        <div
+                                            className={`flex h-[24px] w-[100px] items-center justify-center text-center font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] transition-colors duration-300 ${selectedQuoteType === index
+                                                ? "text-[#AC3E25]"
+                                                : "text-[#00000066]"
+                                                }`}
+                                        >
+                                            {quoteType.label}
+                                        </div>
+                                    </button>
+                                ))}
                             </div>
 
                         </div>
@@ -177,7 +173,7 @@ export default function Quote() {
 
 
                                 {/* SELECT BOX */}
-                                <div className="flex h-[54px] w-[630px] items-center justify-between rounded-[5px] border border-[#00000033] bg-[#4444440D] px-[28px] py-[15px]">
+                                <div className="group flex h-[54px] w-[630px] cursor-pointer items-center justify-between rounded-[5px] border border-[#00000033] bg-[#4444440D] px-[28px] py-[15px] transition-all duration-300 ease-out hover:border-[#AC3E25] hover:bg-[#AC3E2508] hover:shadow-[0_4px_14px_rgba(172,62,37,0.10)]">
 
                                     <span className="h-[21px] w-[550px] font-['Poppins'] text-[14px] font-normal capitalize leading-[100%] text-[#444444]">
                                         Select
@@ -220,7 +216,7 @@ export default function Quote() {
                                 <div className="flex h-[49px] w-[630px] gap-[16px]">
 
                                     {/* SHOW ALL PLAN */}
-                                    <button className="flex h-[49px] flex-1 items-center justify-center rounded-[5px] border border-[#AC3E25] bg-[#AC3E251A]">
+                                    <button className="flex h-[49px] flex-1 cursor-pointer items-center justify-center rounded-[5px] border border-[#AC3E25] bg-[#AC3E251A] shadow-[0_4px_12px_rgba(172,62,37,0.10)] transition-all duration-300 ease-out hover:-translate-y-[1px] hover:shadow-[0_6px_16px_rgba(172,62,37,0.16)]">
                                         <span className="font-['Poppins'] text-[14px] font-normal leading-[100%] text-[#AC3E25]">
                                             Show all plan
                                         </span>
@@ -228,7 +224,7 @@ export default function Quote() {
 
 
                                     {/* UP TO 1 LAC */}
-                                    <button className="flex h-[49px] flex-1 items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D]">
+                                    <button className="flex h-[49px] flex-1 cursor-pointer items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D] transition-all duration-300 ease-out hover:-translate-y-[1px] hover:border-[#AC3E25] hover:bg-[#AC3E2508] hover:shadow-[0_5px_14px_rgba(0,0,0,0.08)]">
                                         <span className="font-['Poppins'] text-[14px] font-normal leading-[100%] text-black">
                                             Up to 1 lac
                                         </span>
@@ -236,7 +232,7 @@ export default function Quote() {
 
 
                                     {/* 1 LAC TO 5 LAC */}
-                                    <button className="flex h-[49px] flex-1 items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D]">
+                                    <button className="flex h-[49px] flex-1 cursor-pointer items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D] transition-all duration-300 ease-out hover:-translate-y-[1px] hover:border-[#AC3E25] hover:bg-[#AC3E2508] hover:shadow-[0_5px_14px_rgba(0,0,0,0.08)]">
                                         <span className="font-['Poppins'] text-[14px] font-normal leading-[100%] text-black">
                                             1 Lac to 5 Lac
                                         </span>
@@ -244,7 +240,7 @@ export default function Quote() {
 
 
                                     {/* 5 LAC TO 10 LAC */}
-                                    <button className="flex h-[49px] flex-1 items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D]">
+                                    <button className="flex h-[49px] flex-1 cursor-pointer items-center justify-center rounded-[5px] border border-[#00000033] bg-[#4444440D] transition-all duration-300 ease-out hover:-translate-y-[1px] hover:border-[#AC3E25] hover:bg-[#AC3E2508] hover:shadow-[0_5px_14px_rgba(0,0,0,0.08)]">
                                         <span className="font-['Poppins'] text-[14px] font-normal leading-[100%] text-black">
                                             5 lac to 10 lac
                                         </span>
@@ -262,7 +258,7 @@ export default function Quote() {
                         ================================================== */}
                         <div className="mt-[50px] flex h-[20px] w-[630px] items-center gap-[15px]">
 
-                            <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-[3px] bg-[#AC3E25] text-[14px] leading-none text-white">
+                            <div className="flex h-[20px] w-[20px] shrink-0 cursor-pointer items-center justify-center rounded-[3px] bg-[#AC3E25] text-[14px] leading-none text-white transition-all duration-300 hover:shadow-[0_4px_10px_rgba(172,62,37,0.25)]">
                                 −
                             </div>
 
@@ -279,7 +275,7 @@ export default function Quote() {
                         {/* =================================================
                             SEE PLANS BUTTON
                         ================================================== */}
-                        <button className="mt-[52px] flex h-[57px] w-[630px] items-center justify-center gap-[20px] rounded-[4px] bg-[#AC3E25] font-['Poppins'] text-[16px] font-medium leading-[100%] text-white">
+                        <button className="mt-[52px] flex h-[57px] w-[630px] cursor-pointer items-center justify-center gap-[20px] rounded-[4px] bg-[#AC3E25] font-['Poppins'] text-[16px] font-medium leading-[100%] text-white shadow-[0_6px_18px_rgba(172,62,37,0.18)] transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_10px_24px_rgba(172,62,37,0.26)] active:translate-y-0">
 
                             See Plans
 

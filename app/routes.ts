@@ -8,7 +8,6 @@ import {
 export default [
     layout("./layouts/MainLayouts.tsx", [
         index("./routes/Home.tsx"),
-
         route("about", "./routes/About.tsx"),
         route("quote", "./routes/Quote.tsx"),
         route("agent-portal", "./routes/AgentPortal.tsx"),
@@ -16,5 +15,7 @@ export default [
         route("verify-otp", "./routes/VerifyOtp.tsx"),
         route("Proceed-Otp", "./routes/ProceedOtp.tsx"),
     ]),
+
     route("client-portal", "./routes/Clientportallogin.tsx"),
+    route("agent-portal-profile", "./routes/AgentPortalProfile.tsx"),
 ] satisfies RouteConfig;

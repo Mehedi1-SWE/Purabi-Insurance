@@ -42,9 +42,9 @@ export default function Claims() {
         <div className="min-h-screen bg-[#faf9f8] font-['Poppins'] text-[#171313]">
 
             {/* =========================================================
-          PREMIUM CLAIMS BANNER
-      ========================================================= */}
-            <section className="relative min-h-[475px] overflow-hidden bg-[#f3eeeb]">
+                PREMIUM CLAIMS BANNER
+            ========================================================= */}
+            <section className="relative h-[341px] w-[1440px] overflow-hidden bg-[#f3eeeb] bg-cover bg-center px-[80px] py-[50px]">
 
                 {/* Background Image */}
                 <img
@@ -53,50 +53,59 @@ export default function Claims() {
                     className="absolute inset-0 h-full w-full object-cover object-center"
                 />
 
-                {/* Soft premium overlay */}
+                {/* Soft Premium Overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,248,247,0.99)_0%,rgba(250,248,247,0.96)_28%,rgba(250,248,247,0.82)_47%,rgba(250,248,247,0.45)_67%,rgba(250,248,247,0.08)_100%)]" />
 
-                {/* Subtle warm glow */}
+                {/* Subtle Warm Glow */}
                 <div className="absolute -left-[120px] -top-[150px] h-[400px] w-[400px] rounded-full bg-[#ac3e25]/[0.06] blur-[20px]" />
 
-                <div className="relative mx-auto flex min-h-[475px] w-full max-w-[1280px] items-center px-6 py-16 lg:px-0">
+                {/* Content */}
+                <div className="relative mx-auto flex h-full w-[1280px] items-center">
 
                     <div className="max-w-[650px]">
 
                         {/* Eyebrow */}
-                        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#ac3e25]/15 bg-white/75 px-4 py-2 shadow-[0_5px_20px_rgba(65,35,25,0.06)] backdrop-blur-md">
+                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ac3e25]/15 bg-white/75 px-4 py-2 shadow-[0_5px_20px_rgba(65,35,25,0.06)] backdrop-blur-md">
 
                             <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#ac3e25] text-[10px] text-white">
                                 ✓
                             </span>
 
-                            <span className="text-[11px] font-medium uppercase tracking-[1.6px] text-[#8f3723]">
+                            <span className="text-[10px] font-medium uppercase tracking-[1.6px] text-[#8f3723]">
                                 Claims support
                             </span>
 
                         </div>
 
+
                         {/* Heading */}
-                        <h1 className="max-w-[620px] text-[42px] font-semibold leading-[1.1] tracking-[-1.2px] text-[#211a18] sm:text-[50px] lg:text-[56px]">
+                        <h1 className="max-w-[620px] text-[40px] font-semibold leading-[1.08] tracking-[-1px] text-[#211a18] sm:text-[47px]">
+
                             When you need us most,
+
                             <span className="block text-[#ac3e25]">
                                 we're here to help.
                             </span>
+
                         </h1>
 
+
                         {/* Description */}
-                        <p className="mt-6 max-w-[590px] text-[15px] leading-[1.8] text-[#5f5753] sm:text-[16px]">
+                        <p className="mt-4 max-w-[590px] text-[13px] leading-[1.7] text-[#5f5753] sm:text-[14px]">
+
                             Making a claim shouldn't feel complicated. Our team is here to
                             help you understand the process, prepare the right documents
                             and move forward with confidence.
+
                         </p>
 
+
                         {/* CTA */}
-                        <div className="mt-8 flex flex-wrap items-center gap-3">
+                        <div className="mt-5 flex flex-wrap items-center gap-3">
 
                             <Link
                                 to="/contact-us"
-                                className="group inline-flex items-center gap-3 rounded-[5px] bg-[#ac3e25] px-6 py-3.5 text-[13px] font-medium text-white shadow-[0_10px_25px_rgba(172,62,37,0.20)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#922f1c] hover:shadow-[0_14px_32px_rgba(172,62,37,0.25)]"
+                                className="group inline-flex items-center gap-3 rounded-[5px] bg-[#ac3e25] px-6 py-3 text-[12px] font-medium text-white shadow-[0_9px_22px_rgba(172,62,37,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#922f1c] hover:shadow-[0_13px_28px_rgba(172,62,37,0.23)]"
                             >
                                 Get claims assistance
 
@@ -105,9 +114,10 @@ export default function Claims() {
                                 </span>
                             </Link>
 
+
                             <a
                                 href="#claim-process"
-                                className="inline-flex items-center rounded-[5px] border border-[#d9cfca] bg-white/70 px-6 py-3.5 text-[13px] font-medium text-[#3d3532] backdrop-blur-sm transition-all duration-300 hover:border-[#ac3e25]/30 hover:bg-white"
+                                className="inline-flex items-center rounded-[5px] border border-[#d9cfca] bg-white/70 px-6 py-3 text-[12px] font-medium text-[#3d3532] backdrop-blur-sm transition-all duration-300 hover:border-[#ac3e25]/30 hover:bg-white"
                             >
                                 See how it works
                             </a>
@@ -115,17 +125,19 @@ export default function Claims() {
                         </div>
 
                     </div>
+
                 </div>
 
-                {/* Bottom accent */}
+
+                {/* Bottom Accent */}
                 <div className="absolute bottom-0 left-0 h-[3px] w-full bg-gradient-to-r from-[#ac3e25] via-[#ac3e25]/30 to-transparent" />
 
             </section>
 
 
             {/* =========================================================
-          QUICK CLAIM INTRO
-      ========================================================= */}
+                QUICK CLAIM INTRO
+            ========================================================= */}
             <section className="mx-auto w-full max-w-[1280px] px-6 py-16 lg:px-0 lg:py-[72px]">
 
                 <div className="grid gap-10 lg:grid-cols-[1fr_430px] lg:items-center">
@@ -147,6 +159,7 @@ export default function Claims() {
                         </p>
 
                     </div>
+
 
                     {/* Highlight Card */}
                     <div className="relative overflow-hidden rounded-[8px] border border-[#eaded9] bg-white p-7 shadow-[0_12px_35px_rgba(40,25,20,0.06)]">
@@ -177,6 +190,7 @@ export default function Claims() {
                             </Link>
 
                         </div>
+
                     </div>
 
                 </div>
@@ -185,8 +199,8 @@ export default function Claims() {
 
 
             {/* =========================================================
-          CLAIM PROCESS
-      ========================================================= */}
+                CLAIM PROCESS
+            ========================================================= */}
             <section
                 id="claim-process"
                 className="border-y border-[#eee5e1] bg-white"
@@ -215,10 +229,12 @@ export default function Claims() {
                     {/* Steps */}
                     <div className="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
-                        {/* Connecting line */}
+                        {/* Connecting Line */}
                         <div className="absolute left-[12%] right-[12%] top-[31px] hidden h-px bg-[#e8d9d4] lg:block" />
 
+
                         {claimSteps.map((step) => (
+
                             <div
                                 key={step.number}
                                 className="group relative rounded-[8px] border border-[#ece3df] bg-[#faf9f8] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#ac3e25]/20 hover:bg-white hover:shadow-[0_16px_35px_rgba(45,25,20,0.07)]"
@@ -241,17 +257,19 @@ export default function Claims() {
                                 </p>
 
                             </div>
+
                         ))}
 
                     </div>
 
                 </div>
+
             </section>
 
 
             {/* =========================================================
-          DOCUMENT CHECKLIST
-      ========================================================= */}
+                DOCUMENT CHECKLIST
+            ========================================================= */}
             <section className="mx-auto w-full max-w-[1280px] px-6 py-16 lg:px-0 lg:py-[78px]">
 
                 <div className="grid gap-12 lg:grid-cols-[0.85fr_1fr] lg:items-center">
@@ -290,6 +308,7 @@ export default function Claims() {
                         <div className="grid gap-4 sm:grid-cols-2">
 
                             {documents.map((document) => (
+
                                 <div
                                     key={document}
                                     className="flex items-start gap-3 rounded-[6px] bg-[#faf8f7] p-4 transition-colors duration-200 hover:bg-[#f6efec]"
@@ -304,18 +323,23 @@ export default function Claims() {
                                     </p>
 
                                 </div>
+
                             ))}
 
                         </div>
 
+
                         <div className="mt-6 border-t border-[#eee5e1] pt-5">
 
                             <p className="text-[11px] leading-[1.7] text-[#8a817d]">
+
                                 <span className="font-medium text-[#5e5652]">
                                     Please note:
                                 </span>{" "}
+
                                 The exact documents required may differ depending on your
                                 policy and claim type.
+
                             </p>
 
                         </div>
@@ -328,16 +352,17 @@ export default function Claims() {
 
 
             {/* =========================================================
-          PREMIUM SUPPORT CTA
-      ========================================================= */}
+                PREMIUM SUPPORT CTA
+            ========================================================= */}
             <section className="mx-auto w-full max-w-[1280px] px-6 pb-[70px] lg:px-0 lg:pb-[80px]">
 
                 <div className="relative overflow-hidden rounded-[10px] bg-[#111] px-7 py-10 sm:px-10 lg:px-12 lg:py-11">
 
-                    {/* Decorative shapes */}
+                    {/* Decorative Shapes */}
                     <div className="absolute -right-[90px] -top-[110px] h-[280px] w-[280px] rounded-full border border-white/[0.06]" />
 
                     <div className="absolute -right-[35px] -bottom-[100px] h-[220px] w-[220px] rounded-full bg-[#ac3e25]/20 blur-[2px]" />
+
 
                     <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
 
@@ -358,15 +383,18 @@ export default function Claims() {
 
                         </div>
 
+
                         <Link
                             to="/contact-us"
                             className="group inline-flex shrink-0 items-center justify-center gap-3 rounded-[5px] bg-white px-7 py-4 text-[13px] font-medium text-[#171313] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#f5eeeb]"
                         >
+
                             Contact claims support
 
                             <span className="transition-transform duration-300 group-hover:translate-x-1">
                                 →
                             </span>
+
                         </Link>
 
                     </div>

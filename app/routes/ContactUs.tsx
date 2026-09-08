@@ -9,7 +9,7 @@ export default function ContactUs() {
                 PREMIUM CONTACT BANNER
             ========================================================= */}
             <section
-                className="relative h-[341px] w-[1440px] overflow-hidden bg-cover bg-center px-[80px] py-[50px]"
+                className="relative h-[400px] w-[1440px] overflow-hidden bg-cover bg-center px-[80px] py-[50px]"
                 style={{
                     backgroundImage: "url('/contact-banner.jpg')",
                 }}

@@ -44,7 +44,7 @@ export default function Claims() {
             {/* =========================================================
                 PREMIUM CLAIMS BANNER
             ========================================================= */}
-            <section className="relative h-[341px] w-[1440px] overflow-hidden bg-[#f3eeeb] bg-cover bg-center px-[80px] py-[50px]">
+            <section className="relative h-[280px] w-[1440px] overflow-hidden bg-[#f3eeeb] bg-cover bg-center px-[80px] py-[50px]">
 
                 {/* Background Image */}
                 <img

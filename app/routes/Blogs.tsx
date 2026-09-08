@@ -36,7 +36,7 @@ export default function Blogs() {
     return (
         <div className="min-h-[900px] bg-[#faf8f7] font-['Poppins'] text-[#111]">
 
-            <section className="relative h-[341px] w-full overflow-hidden bg-[#f6f1ee] px-[80px] py-[50px] text-[#171313]">
+            <section className="relative h-[280px] w-full overflow-hidden bg-[#f6f1ee] px-[80px] py-[50px] text-[#171313]">
 
                 <img
                     src="/blogs-banner.png"

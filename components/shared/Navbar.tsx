@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* Home */}
         <Link
           to="/"
-          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           Home
         </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
         {/* About Us */}
         <Link
           to="/about"
-          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           About Us
         </Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsServicesOpen((open) => !open)}
-            className="flex h-[55px] cursor-pointer items-center justify-center gap-[10px] whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+            className="flex h-[55px] cursor-pointer items-center justify-center gap-[10px] whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
           >
             <span>Services</span>
 
@@ -135,7 +135,7 @@ export default function Navbar() {
         {/* Claims */}
         <Link
           to="/claims"
-          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center gap-[10px] whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center gap-[10px] whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           <span>Claims</span>
           <span className="text-[22px] leading-none">⌄</span>
@@ -144,7 +144,7 @@ export default function Navbar() {
         {/* Blogs */}
         <Link
           to="/blogs"
-          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           Blogs
         </Link>
@@ -152,7 +152,7 @@ export default function Navbar() {
         {/* Contact Us */}
         <Link
           to="/contact-us"
-          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
+          className="flex h-[55px] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap font-['Poppins'] text-[18px] font-normal leading-[100%] tracking-[0%] text-black transition-all duration-300 hover:text-[rgba(172,62,37,1)]"
         >
           Contact Us
         </Link>
@@ -160,10 +160,13 @@ export default function Navbar() {
         {/* Get A Quote */}
         <Link
           to="/quote"
-          className="box-border flex h-[55px] w-[219px] shrink-0 cursor-pointer items-center justify-center gap-[20px] rounded-[4px] bg-[rgba(172,62,37,1)] px-[24px] py-[14px] font-['Poppins'] text-[18px] font-medium leading-[100%] text-white transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_8px_20px_rgba(172,62,37,0.25)]"
+          className="box-border flex h-[55px] w-[219px] shrink-0 cursor-pointer items-center justify-center gap-[20px] rounded-[4px] bg-[rgba(172,62,37,1)] px-[24px] py-[14px] font-['Poppins'] text-[18px] font-medium leading-[100%] tracking-[0%] text-white transition-all duration-300 ease-out hover:-translate-y-[2px] hover:shadow-[0_8px_20px_rgba(172,62,37,0.25)]"
         >
           <span>Get A Quote</span>
-          <span className="text-[22px] leading-none">↗</span>
+
+          <span className="text-[22px] leading-none">
+            ↗
+          </span>
         </Link>
 
       </div>

@@ -14,22 +14,49 @@ export default [
 
         route("quote", "./routes/Quote.tsx"),
 
-        route("agent-portal", "./routes/AgentPortal.tsx"),
+        route(
+            "agent-portal",
+            "./routes/AgentPortal.tsx"
+        ),
 
-        route("SignUp", "./routes/SignUp.tsx"),
+        route(
+            "SignUp",
+            "./routes/SignUp.tsx"
+        ),
 
-        route("verify-otp", "./routes/VerifyOtp.tsx"),
+        route(
+            "verify-otp",
+            "./routes/VerifyOtp.tsx"
+        ),
 
-        route("Proceed-Otp", "./routes/ProceedOtp.tsx"),
+        route(
+            "Proceed-Otp",
+            "./routes/ProceedOtp.tsx"
+        ),
 
-        route("claims", "./routes/Claims.tsx"),
+        /* Claims */
+        route(
+            "claims",
+            "./routes/Claims.tsx"
+        ),
 
-        route("blogs", "./routes/Blogs.tsx"),
+        /* Blogs */
+        route(
+            "blogs",
+            "./routes/Blogs.tsx"
+        ),
 
-        // Read Article
-        route("blogs/:slug", "./routes/BlogArticle.tsx"),
+        /* Full Blog Article */
+        route(
+            "blogs/:slug",
+            "./routes/BlogArticle.tsx"
+        ),
 
-        route("contact-us", "./routes/ContactUs.tsx"),
+        /* Contact */
+        route(
+            "contact-us",
+            "./routes/ContactUs.tsx"
+        ),
 
         route(
             "terms-and-conditions",
@@ -45,6 +72,7 @@ export default [
             "refund-policy",
             "./routes/RefundPolicy.tsx"
         ),
+
     ]),
 
     route(

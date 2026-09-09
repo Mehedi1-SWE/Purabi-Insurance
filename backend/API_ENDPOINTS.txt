@@ -1,0 +1,47 @@
+PURABI INSURANCE API
+Base URL: http://localhost:5000/api
+
+AUTH
+POST /auth/register
+POST /auth/verify-otp
+POST /auth/resend-otp
+POST /auth/login
+GET /auth/me
+
+QUOTES
+POST /quotes
+GET /quotes
+PATCH /quotes/:id/status
+
+CLAIMS
+POST /claims
+GET /claims
+GET /claims/:id
+PATCH /claims/:id/status
+
+POLICIES
+POST /policies
+GET /policies
+GET /policies/:id
+PATCH /policies/:id/status
+
+BLOGS
+GET /blogs
+GET /blogs/:slug
+POST /blogs
+PATCH /blogs/:id
+DELETE /blogs/:id
+
+CONTACT
+POST /contact
+GET /contact
+PATCH /contact/:id/status
+
+AGENTS
+POST /agents
+GET /agents
+GET /agents/me
+PATCH /agents/:userId
+
+HEALTH
+GET /health

@@ -92,13 +92,194 @@ export default function Clientportallogin() {
           <div className="flex h-[271px] w-[960px] flex-col gap-[20px] rounded-[5px] bg-white p-[20px] shadow-[0_2px_10px_rgba(0,0,0,0.1)]">
             <h2 className="m-0 font-['Poppins'] text-[18px] font-medium leading-[100%]">Account Information</h2>
 
-            <div className="flex h-[184px] w-[920px] flex-col gap-[10px]">
-              <div className="h-[24px] w-[920px]" />
-              <div className="h-[48px] w-[920px]" />
-              <div className="h-[24px] w-[920px]" />
-              <div className="h-[24px] w-[920px]" />
-              <div className="h-[24px] w-[920px]" />
+
+            <div className="flex h-[229px] w-[920px] flex-col gap-[10px]">
+              {/* Layout 1 */}
+              <div className="flex h-[21px] w-[920px] justify-between">
+                {/* Main Left Layout */}
+                <div className="flex h-[21px] w-[350px] gap-[10px]">
+                  {/* Name */}
+                  <div className="flex h-[21px] w-[100px] items-center justify-center">
+                    <div className="h-[21px] w-[44px] text-center font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Name
+                    </div>
+                  </div>
+
+                  {/* Tarif */}
+                  <div className="flex h-[21px] w-[200px] items-center justify-center">
+                    <div className="h-[21px] w-[126px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      Tarif Al-Mozahed
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Right Layout */}
+                <div className="flex h-[21px] w-[400px] gap-[10px]">
+                  {/* Mobile Number */}
+                  <div className="flex h-[21px] w-[150px] items-center">
+                    <div className="h-[21px] w-[111px] font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Mobile Number
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="flex h-[21px] w-[299px] items-center justify-center">
+                    <div className="h-[21px] w-[299px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : +880 1768-179927
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Layout 2 */}
+              <div className="flex h-[21px] w-[920px] justify-between">
+                {/* Main Left Layout */}
+                <div className="flex h-[21px] w-[350px] gap-[10px]">
+                  {/* Name */}
+                  <div className="flex h-[21px] w-[100px] items-center justify-center">
+                    <div className="h-[21px] w-[44px] text-center font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Email
+                    </div>
+                  </div>
+
+                  {/* Tarif */}
+                  <div className="flex h-[21px] w-[200px] items-center justify-center">
+                    <div className="h-[21px] w-[126px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : tarif@goinnovior.com
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Right Layout */}
+                <div className="flex h-[21px] w-[400px] gap-[10px]">
+                  {/* Mobile Number */}
+                  <div className="flex h-[21px] w-[150px] items-center">
+                    <div className="h-[21px] w-[111px] font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Address
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="flex h-[21px] w-[299px] items-center justify-center">
+                    <div className="h-[21px] w-[299px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : House 774, Road 11, Avenue 2, Mirpur DOHS
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Layout 3 */}
+              <div className="flex h-[21px] w-[920px] justify-between">
+                {/* Main Left Layout */}
+                <div className="flex h-[21px] w-[350px] gap-[10px]">
+                  {/* Name */}
+                  <div className="flex h-[21px] w-[100px] items-center justify-center">
+                    <div className="h-[21px] w-[44px] text-center font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      City
+                    </div>
+                  </div>
+
+                  {/* Tarif */}
+                  <div className="flex h-[21px] w-[200px] items-center justify-center">
+                    <div className="h-[21px] w-[126px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : Dhaka
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Right Layout */}
+                <div className="flex h-[21px] w-[400px] gap-[10px]">
+                  {/* Mobile Number */}
+                  <div className="flex h-[21px] w-[150px] items-center">
+                    <div className="h-[21px] w-[111px] font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Nationality
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="flex h-[21px] w-[299px] items-center justify-center">
+                    <div className="h-[21px] w-[299px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : Bangladeshi
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Layout 4 */}
+              <div className="flex h-[21px] w-[920px] justify-between">
+                {/* Main Left Layout */}
+                <div className="flex h-[21px] w-[350px] gap-[10px]">
+                  {/* Name */}
+                  <div className="flex h-[21px] w-[100px] items-center justify-center">
+                    <div className="h-[21px] w-[44px] text-center font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Passport/NID
+                    </div>
+                  </div>
+
+                  {/* Tarif */}
+                  <div className="flex h-[21px] w-[200px] items-center justify-center">
+                    <div className="h-[21px] w-[126px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : 691 040 8920
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Right Layout */}
+                <div className="flex h-[21px] w-[400px] gap-[10px]">
+                  {/* Mobile Number */}
+                  <div className="flex h-[21px] w-[150px] items-center">
+                    <div className="h-[21px] w-[111px] font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Date of Birth
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="flex h-[21px] w-[299px] items-center justify-center">
+                    <div className="h-[21px] w-[299px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : 15 November 2000
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Layout 5 */}
+              <div className="flex h-[21px] w-[920px] justify-between">
+                {/* Main Left Layout */}
+                <div className="flex h-[21px] w-[350px] gap-[10px]">
+                  {/* Name */}
+                  <div className="flex h-[21px] w-[100px] items-center justify-center">
+                    <div className="h-[21px] w-[44px] text-center font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Gender
+                    </div>
+                  </div>
+
+                  {/* Tarif */}
+                  <div className="flex h-[21px] w-[200px] items-center justify-center">
+                    <div className="h-[21px] w-[126px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : Male
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Right Layout */}
+                <div className="flex h-[21px] w-[400px] gap-[10px]">
+                  {/* Mobile Number */}
+                  <div className="flex h-[21px] w-[150px] items-center">
+                    <div className="h-[21px] w-[111px] font-[Poppins] text-[14px] font-bold leading-[100%]">
+                      Martial Status
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div className="flex h-[21px] w-[299px] items-center justify-center">
+                    <div className="h-[21px] w-[299px] text-center font-[Poppins] text-[14px] font-normal leading-[100%]">
+                      : Married
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>

@@ -2,10 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Agent = require("../models/Agent");
 
-// ==============================
 // Agent Login
-// ==============================
-
 const loginAgent = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -18,7 +15,7 @@ const loginAgent = async (req, res) => {
         }
 
         const agent = await Agent.findOne({
-            email: email.toLowerCase(),
+            email: email.toLowerCase().trim(),
         });
 
         if (!agent) {
@@ -35,12 +32,12 @@ const loginAgent = async (req, res) => {
             });
         }
 
-        const passwordMatch = await bcrypt.compare(
+        const isPasswordCorrect = await bcrypt.compare(
             password,
             agent.password
         );
 
-        if (!passwordMatch) {
+        if (!isPasswordCorrect) {
             return res.status(401).json({
                 success: false,
                 message: "Invalid email or password.",
@@ -58,7 +55,7 @@ const loginAgent = async (req, res) => {
             }
         );
 
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             message: "Agent login successful.",
             token,
@@ -73,22 +70,17 @@ const loginAgent = async (req, res) => {
     } catch (error) {
         console.error("Agent login error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
             message: "Server error.",
         });
     }
 };
 
-// ==============================
 // Get Agent Profile
-// ==============================
-
 const getAgentProfile = async (req, res) => {
     try {
-        const agent = await Agent.findById(req.user.id).select(
-            "-password"
-        );
+        const agent = await Agent.findById(req.user.id).select("-password");
 
         if (!agent) {
             return res.status(404).json({
@@ -97,24 +89,21 @@ const getAgentProfile = async (req, res) => {
             });
         }
 
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             agent,
         });
     } catch (error) {
         console.error("Get agent profile error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
             message: "Server error.",
         });
     }
 };
 
-// ==============================
 // Update Agent Profile
-// ==============================
-
 const updateAgentProfile = async (req, res) => {
     try {
         const allowedFields = [
@@ -139,7 +128,7 @@ const updateAgentProfile = async (req, res) => {
         });
 
         if (updates.email) {
-            updates.email = updates.email.toLowerCase();
+            updates.email = updates.email.toLowerCase().trim();
         }
 
         const agent = await Agent.findByIdAndUpdate(
@@ -158,7 +147,7 @@ const updateAgentProfile = async (req, res) => {
             });
         }
 
-        return res.status(200).json({
+        res.status(200).json({
             success: true,
             message: "Profile updated successfully.",
             agent,
@@ -166,7 +155,7 @@ const updateAgentProfile = async (req, res) => {
     } catch (error) {
         console.error("Update agent profile error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
             message: "Server error.",
         });

@@ -1,3 +1,0 @@
-import mongoose from "mongoose";
-const schema=new mongoose.Schema({customer:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null},policy:{type:mongoose.Schema.Types.ObjectId,ref:"Policy",default:null},claimNumber:{type:String,required:true,unique:true},policyNumber:{type:String,required:true},claimType:{type:String,required:true},description:{type:String,required:true},amount:{type:Number,default:0},status:{type:String,enum:["submitted","under-review","approved","rejected","paid"],default:"submitted"},documents:[{name:String,url:String}]},{timestamps:true});
-export default mongoose.model("Claim",schema);

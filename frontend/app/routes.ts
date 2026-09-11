@@ -59,9 +59,15 @@ export default [
             "./routes/Blogs.tsx"
         ),
 
+        //Add Blog
+        route(
+            "add-blog",
+            "./routes/AddBlog.tsx"
+        ),
+
         // Full Blog Article
         route(
-            "blogs/:slug",
+            "blogs/:id",
             "./routes/BlogArticle.tsx"
         ),
 

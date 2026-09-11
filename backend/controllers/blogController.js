@@ -1,6 +1,128 @@
-import Blog from "../models/Blog.js";import ApiError from "../utils/ApiError.js";import asyncHandler from "../utils/asyncHandler.js";
-export const getBlogs=asyncHandler(async(req,res)=>{const blogs=await Blog.find({published:true}).sort({createdAt:-1});res.json({success:true,count:blogs.length,data:{blogs}});});
-export const getBlogBySlug=asyncHandler(async(req,res)=>{const blog=await Blog.findOne({slug:req.params.slug.toLowerCase(),published:true});if(!blog)throw new ApiError(404,"Blog post not found.");res.json({success:true,data:{blog}});});
-export const createBlog=asyncHandler(async(req,res)=>{const{slug,category,title,text,content,image,readTime,published=true}=req.body;if(!slug||!category||!title||!text)throw new ApiError(400,"Slug, category, title and text are required.");const blog=await Blog.create({slug:slug.toLowerCase().trim(),category,title,text,content,image,readTime,published});res.status(201).json({success:true,message:"Blog created successfully.",data:{blog}});});
-export const updateBlog=asyncHandler(async(req,res)=>{const blog=await Blog.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true});if(!blog)throw new ApiError(404,"Blog post not found.");res.json({success:true,message:"Blog updated successfully.",data:{blog}});});
-export const deleteBlog=asyncHandler(async(req,res)=>{if(!await Blog.findByIdAndDelete(req.params.id))throw new ApiError(404,"Blog post not found.");res.json({success:true,message:"Blog deleted successfully."});});
+const Blog = require("../models/Blog");
+
+// Create Blog
+const createBlog = async (req, res) => {
+  try {
+    const blog = await Blog.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      message: "Blog created successfully",
+      data: blog
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Get All Blogs
+const getBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find().sort({
+      createdAt: -1
+    });
+
+    res.status(200).json({
+      success: true,
+      data: blogs
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Get Single Blog
+const getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: blog
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Update Blog
+const updateBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    );
+
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Blog updated successfully",
+      data: blog
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// Delete Blog
+const deleteBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndDelete(
+      req.params.id
+    );
+
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found"
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Blog deleted successfully"
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+module.exports = {
+  createBlog,
+  getBlogs,
+  getBlogById,
+  updateBlog,
+  deleteBlog
+};

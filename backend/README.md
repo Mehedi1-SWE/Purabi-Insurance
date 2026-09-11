@@ -1,45 +1,94 @@
-# Purabi Insurance API
+# Blog Backend (Node.js + Express + MongoDB)
 
-MongoDB + Node.js + Express.js backend for the Purabi Insurance frontend.
+A scalable REST API starter using a layered architecture, with a Blog module as a working CRUD example.
 
-## Install
-```bash
-npm install
+## Folder Structure
+
+```
+blog-backend/
+├── config/
+│   └── db.js              # MongoDB connection
+├── models/
+│   └── Blog.js             # Mongoose schema
+├── controllers/
+│   └── blogController.js   # Business logic
+├── routes/
+│   └── blogRoutes.js       # Route definitions
+├── middleware/
+│   └── errorHandler.js     # 404 + centralized error handling
+├── utils/
+│   └── ApiError.js         # Custom error class
+├── app.js                  # Express app (middleware + routes)
+├── server.js               # Entry point (DB connect + listen)
+├── .env.example
+└── package.json
 ```
 
-## Environment
-Copy `.env.example` to `.env` and set your MongoDB URI and JWT secret.
+This structure scales well: to add a new resource (e.g. `users`, `comments`), just add a model, controller, and routes file, then mount it in `app.js` — no changes needed elsewhere.
 
-## Run
+## Setup
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Copy `.env.example` to `.env` and fill in your values:
+   ```bash
+   cp .env.example .env
+   ```
+   - `MONGO_URI` — local MongoDB (`mongodb://127.0.0.1:27017/blogdb`) or a MongoDB Atlas connection string.
+
+3. Run in development (auto-restart on changes):
+   ```bash
+   npm run dev
+   ```
+
+4. Or run in production:
+   ```bash
+   npm start
+   ```
+
+Server starts at `http://localhost:5000` by default. Health check: `GET /api/health`.
+
+## Blog API Endpoints
+
+| Method | Endpoint              | Description                                  |
+|--------|-----------------------|-----------------------------------------------|
+| POST   | `/api/blogs`           | Create a new blog                            |
+| GET    | `/api/blogs`           | Get all blogs (pagination, search, filters)  |
+| GET    | `/api/blogs/:id`       | Get single blog by ID or slug                |
+| PUT    | `/api/blogs/:id`       | Update a blog                                |
+| DELETE | `/api/blogs/:id`       | Delete a blog                                |
+
+### Query params for `GET /api/blogs`
+- `page`, `limit` — pagination
+- `search` — full-text search on title/content
+- `tag` — filter by tag
+- `published` — `true` / `false`
+
+### Example: Create a blog
 ```bash
-npm run dev
+curl -X POST http://localhost:5000/api/blogs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Getting Started with Express",
+    "content": "Express is a minimal Node.js framework...",
+    "author": "Jane Doe",
+    "tags": ["node", "express"],
+    "published": true
+  }'
 ```
-Production:
+
+### Example: Get blogs with search + pagination
 ```bash
-npm start
+curl "http://localhost:5000/api/blogs?search=express&page=1&limit=5"
 ```
 
-API base URL: `http://localhost:5000/api`
+## Notes for Scaling Further
 
-## Authentication
-Register: `POST /api/auth/register`
-Verify OTP: `POST /api/auth/verify-otp`
-Resend OTP: `POST /api/auth/resend-otp`
-Login: `POST /api/auth/login`
-Current user: `GET /api/auth/me`
-
-In development, OTP is printed in the terminal and returned as `developmentOtp`. Replace `utils/sendOTP.js` with your real email/SMS provider for production.
-
-## Frontend integration
-Send the JWT returned by login/verify in:
-`Authorization: Bearer YOUR_TOKEN`
-
-The API includes customer, agent and admin role protection for quotes, claims, policies, blogs, contact messages and agent profiles.
-
-## Sample blogs
-After MongoDB is connected:
-```bash
-npm run seed:blogs
-```
-
-No `.env` or `node_modules` is included in this package.
+- **Auth**: Add a `middleware/auth.js` with JWT verification and protect routes like `POST`/`PUT`/`DELETE` in `blogRoutes.js`.
+- **Validation**: For stricter input validation, add `express-validator` or `zod` checks in the routes before hitting controllers.
+- **New resources**: Copy the Blog pattern (model → controller → routes → mount in `app.js`) for `User`, `Comment`, `Category`, etc.
+- **Testing**: Add `jest` + `supertest` for controller/route tests.
+- **Rate limiting**: Add `express-rate-limit` in `app.js` for public APIs.

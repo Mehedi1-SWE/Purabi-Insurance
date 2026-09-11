@@ -1,112 +1,84 @@
 import { Link, useParams } from "react-router";
-import { posts } from "./Blogs";
+import { useEffect, useState } from "react";
 
-const articleContent: Record<
-    string,
-    {
-        intro: string;
-        sections: {
-            heading: string;
-            text: string;
-        }[];
-    }
-> = {
-    "choosing-the-right-insurance-cover": {
-        intro:
-            "The right insurance policy should feel like a practical safety net—not a confusing list of terms. Start with what you need to protect, then choose coverage that matches your real responsibilities.",
-
-        sections: [
-            {
-                heading: "Start with what you need to protect",
-                text:
-                    "List the people, property, vehicles, health needs or business responsibilities that would create a serious financial impact if something unexpected happened.",
-            },
-            {
-                heading: "Understand the coverage before the price",
-                text:
-                    "A lower premium is not always the better choice. Compare the protection offered, exclusions, limits, deductibles and claim requirements so you know what you are actually buying.",
-            },
-            {
-                heading: "Choose a cover that can grow with you",
-                text:
-                    "Your income, family, assets and business responsibilities can change. A good policy should be reviewed when those circumstances change rather than left untouched for years.",
-            },
-        ],
-    },
-
-    "why-policy-review-matters": {
-        intro:
-            "An annual policy review is a simple habit that helps keep your protection aligned with your life. Changes in assets, responsibilities and financial goals can make an old policy less suitable.",
-
-        sections: [
-            {
-                heading: "Your circumstances change",
-                text:
-                    "A new vehicle, property purchase, growing family or expanding business can change the amount and type of protection you need.",
-            },
-            {
-                heading: "Coverage gaps are easier to fix early",
-                text:
-                    "Reviewing your policy gives you an opportunity to spot outdated information, missing coverage or limits that no longer reflect your current needs.",
-            },
-            {
-                heading: "Keep your policy information accurate",
-                text:
-                    "Make sure contact details, nominees, insured values and other important information remain current. Accurate records can make future service and claims conversations smoother.",
-            },
-        ],
-    },
-
-    "claim-ready-checklist": {
-        intro:
-            "When a claim happens, having the right information ready can reduce unnecessary back-and-forth. A little preparation can make the process clearer and easier to follow.",
-
-        sections: [
-            {
-                heading: "Keep your policy details accessible",
-                text:
-                    "Have your policy number and relevant policy documents ready so the claim can be matched to the correct coverage quickly.",
-            },
-            {
-                heading: "Collect supporting evidence",
-                text:
-                    "Depending on the claim, this may include photographs, invoices, reports, receipts, identification and other documents requested during assessment.",
-            },
-            {
-                heading: "Keep communication clear",
-                text:
-                    "Share accurate information, respond to requests promptly and keep copies of the documents you submit. This helps everyone maintain a clear record of the claim.",
-            },
-        ],
-    },
+type Blog = {
+    _id: string;
+    title: string;
+    description: string;
+    content: string;
+    image: string;
+    category: string;
+    author: string;
+    createdAt: string;
+    updatedAt?: string;
 };
 
 export default function BlogArticle() {
-    const { slug } = useParams();
+    const { id } = useParams();
 
-    const post = posts.find(
-        (item) => item.slug === slug
-    );
+    const [blog, setBlog] = useState<Blog | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-    const content = slug
-        ? articleContent[slug]
-        : undefined;
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                if (!id) {
+                    setError("Article not found");
+                    setLoading(false);
+                    return;
+                }
 
-    if (!post || !content) {
+                const response = await fetch(
+                    `http://localhost:5000/api/blogs/${id}`
+                );
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    setError(result.message || "Article not found");
+                    return;
+                }
+
+                setBlog(result.data);
+            } catch (err) {
+                console.error("Blog article error:", err);
+                setError("Unable to load article.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBlog();
+    }, [id]);
+
+    if (loading) {
         return (
             <div className="min-h-[700px] bg-[#faf8f7] px-8 py-24 text-center font-['Poppins']">
+                <p className="text-[14px] text-[#666]">
+                    Loading article...
+                </p>
+            </div>
+        );
+    }
 
+    if (error || !blog) {
+        return (
+            <div className="min-h-[700px] bg-[#faf8f7] px-8 py-24 text-center font-['Poppins']">
                 <h1 className="text-4xl font-semibold">
                     Article not found
                 </h1>
 
+                <p className="mt-4 text-[14px] text-[#666]">
+                    {error}
+                </p>
+
                 <Link
                     to="/blogs"
-                    className="mt-6 inline-block text-[#ac3e25]"
+                    className="mt-6 inline-block rounded-[5px] bg-[#ac3e25] px-6 py-3 text-[13px] font-medium text-white"
                 >
                     ← Back to Blogs
                 </Link>
-
             </div>
         );
     }
@@ -117,11 +89,13 @@ export default function BlogArticle() {
             {/* Article Banner */}
             <section className="relative overflow-hidden bg-[#f6f1ee] px-[80px] py-[90px] text-[#171313]">
 
-                <img
-                    src={post.image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.86]"
-                />
+                {blog.image && (
+                    <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.86]"
+                    />
+                )}
 
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,245,243,0.99)_0%,rgba(248,245,243,0.96)_34%,rgba(248,245,243,0.72)_58%,rgba(248,245,243,0.22)_82%,rgba(248,245,243,0.08)_100%)]" />
 
@@ -135,25 +109,31 @@ export default function BlogArticle() {
                     </Link>
 
                     <p className="mt-10 text-[12px] font-medium uppercase tracking-[2px] text-[#8f3723]">
-                        {post.category}
+                        {blog.category}
                     </p>
 
                     <h1 className="mt-4 max-w-[900px] text-[52px] font-semibold leading-[1.08] tracking-[-1px] text-[#211a18]">
-                        {post.title}
+                        {blog.title}
                     </h1>
 
                     <div className="mt-6 flex gap-5 text-[12px] text-[#756c68]">
-                        <span>
-                            {post.date}
-                        </span>
 
                         <span>
-                            •
+                            {new Date(
+                                blog.createdAt
+                            ).toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "2-digit",
+                                year: "numeric",
+                            })}
                         </span>
 
+                        <span>•</span>
+
                         <span>
-                            {post.readTime}
+                            By {blog.author}
                         </span>
+
                     </div>
 
                 </div>
@@ -162,40 +142,16 @@ export default function BlogArticle() {
             {/* Article Body */}
             <main className="mx-auto w-[900px] py-[72px]">
 
+                {/* Description */}
                 <p className="text-[20px] font-medium leading-[1.8] text-[#333]">
-                    {content.intro}
+                    {blog.description}
                 </p>
 
-                <div className="mt-12 space-y-11">
-
-                    {content.sections.map(
-                        (section, index) => (
-                            <section key={section.heading}>
-
-                                <div className="flex gap-5">
-
-                                    <span className="pt-1 text-[12px] font-semibold tracking-[1px] text-[#ac3e25]">
-                                        0{index + 1}
-                                    </span>
-
-                                    <div>
-
-                                        <h2 className="text-[27px] font-semibold tracking-[-.5px]">
-                                            {section.heading}
-                                        </h2>
-
-                                        <p className="mt-4 text-[15px] leading-[1.9] text-[#666]">
-                                            {section.text}
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </section>
-                        )
-                    )}
-
+                {/* Content */}
+                <div className="mt-10">
+                    <p className="whitespace-pre-line text-[15px] leading-[1.9] text-[#666]">
+                        {blog.content}
+                    </p>
                 </div>
 
                 {/* CTA */}
@@ -206,7 +162,8 @@ export default function BlogArticle() {
                     </p>
 
                     <p className="mt-2 text-[13px] leading-[1.7] text-white/60">
-                        Our team can help you understand your policy, claims and next steps.
+                        Our team can help you understand your policy,
+                        claims and next steps.
                     </p>
 
                     <Link

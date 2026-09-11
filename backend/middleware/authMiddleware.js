@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const protectAdmin = (req, res, next) => {
+const protect = (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
 
@@ -18,15 +18,15 @@ const protectAdmin = (req, res, next) => {
             process.env.JWT_SECRET
         );
 
-        req.admin = decoded;
+        req.user = decoded;
 
         next();
     } catch (error) {
         return res.status(401).json({
             success: false,
-            message: "Invalid or expired admin token.",
+            message: "Invalid or expired token.",
         });
     }
 };
 
-module.exports = protectAdmin;
+module.exports = protect;

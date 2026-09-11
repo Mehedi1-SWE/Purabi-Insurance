@@ -7,7 +7,7 @@ const cors = require("cors");
 const blogRoutes = require("./routes/blogRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const authRoutes = require("./routes/authRoutes");
-
+const agentRoutes = require("./routes/agentRoutes");
 
 const app = express();
 
@@ -29,12 +29,12 @@ app.get("/", (req, res) => {
 
 // Blog Routes
 app.use("/api", blogRoutes);
-
 // Admin Routes
 app.use("/api/admin", adminRoutes);
-module.exports = app;
-
 // Auth Routes
 app.use("/api/auth", authRoutes);
+//Agent 
+app.use("/api/agent", agentRoutes);
+
 module.exports = app;
 

@@ -5,24 +5,35 @@ const {
   getBlogs,
   getBlogById,
   updateBlog,
-  deleteBlog
+  deleteBlog,
 } = require("../controllers/blogController");
+
+const protectAdmin = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// Create Blog
-router.post("/blogs", createBlog);
-
-// Get All Blogs
+// Public
 router.get("/blogs", getBlogs);
 
-// Get Single Blog
 router.get("/blogs/:id", getBlogById);
 
-// Update Blog
-router.put("/blogs/:id", updateBlog);
+// Admin only
+router.post(
+  "/blogs",
+  protectAdmin,
+  createBlog
+);
 
-// Delete Blog
-router.delete("/blogs/:id", deleteBlog);
+router.put(
+  "/blogs/:id",
+  protectAdmin,
+  updateBlog
+);
+
+router.delete(
+  "/blogs/:id",
+  protectAdmin,
+  deleteBlog
+);
 
 module.exports = router;

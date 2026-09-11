@@ -59,10 +59,22 @@ export default [
             "./routes/Blogs.tsx"
         ),
 
-        //Add Blog
+        // Add Blog
         route(
             "add-blog",
             "./routes/AddBlog.tsx"
+        ),
+
+        // Blog Management
+        route(
+            "blog-management",
+            "./routes/BlogManagement.tsx"
+        ),
+
+        // Edit Blog
+        route(
+            "blog-management/edit/:id",
+            "./routes/EditBlog.tsx"
         ),
 
         // Full Blog Article
@@ -93,6 +105,17 @@ export default [
         route(
             "refund-policy",
             "./routes/RefundPolicy.tsx"
+        ),
+
+        // Admin Login
+        route(
+            "admin-login",
+            "./routes/AdminLogin.tsx"
+        ),
+        // Admin Dashboard
+        route(
+            "admin-dashboard",
+            "./routes/AdminDashboard.tsx"
         ),
 
     ]),

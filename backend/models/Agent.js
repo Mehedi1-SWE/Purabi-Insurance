@@ -63,6 +63,11 @@ const agentSchema = new mongoose.Schema(
             default: "Single",
         },
 
+        profileImage: {
+            type: String,
+            default: "",
+        },
+
         password: {
             type: String,
             required: true,

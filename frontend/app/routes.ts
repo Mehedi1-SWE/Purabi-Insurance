@@ -47,6 +47,18 @@ export default [
             "./routes/ProceedOtp.tsx"
         ),
 
+        // Client Personal Information
+        route(
+            "client/personal-information",
+            "./routes/ClientPersonalInformation.tsx"
+        ),
+
+        // Agent Personal Information
+        route(
+            "agent/personal-information",
+            "./routes/AgentPersonalInformation.tsx"
+        ),
+
         // Claims
         route(
             "claims",
@@ -112,6 +124,7 @@ export default [
             "admin-login",
             "./routes/AdminLogin.tsx"
         ),
+
         // Admin Dashboard
         route(
             "admin-dashboard",

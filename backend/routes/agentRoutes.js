@@ -7,6 +7,7 @@ const {
 } = require("../controllers/agentController");
 
 const protect = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
@@ -14,9 +15,18 @@ const router = express.Router();
 router.post("/login", loginAgent);
 
 // Protected Agent Profile
-router.get("/profile", protect, getAgentProfile);
+router.get(
+    "/profile",
+    protect,
+    getAgentProfile
+);
 
 // Protected Update Profile
-router.put("/profile", protect, updateAgentProfile);
+router.put(
+    "/profile",
+    protect,
+    upload.single("profileImage"),
+    updateAgentProfile
+);
 
 module.exports = router;

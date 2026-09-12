@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import InsuranceCarousel from "../../components/InsuranceCarousel";
 
-
 export default function ProceedOtp() {
     return (
         <div className="h-[594px] w-[1280px] opacity-100">
@@ -42,7 +41,7 @@ export default function ProceedOtp() {
                                 </span>
 
                                 <Link
-                                    to="/agent-portal"
+                                    to="/verify-otp"
                                     className="font-['Poppins'] text-[16px] font-bold capitalize leading-[100%] tracking-[0%] text-[rgba(66,133,244,1)] transition-all duration-300 ease-out hover:brightness-110 hover:drop-shadow-[0_2px_6px_rgba(66,133,244,0.3)] active:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(66,133,244,0.3)]"
                                 >
                                     Edit
@@ -50,6 +49,7 @@ export default function ProceedOtp() {
 
                             </p>
                         </div>
+
                     </div>
 
                     {/* ================= Right Layout - 2nd Layout ================= */}
@@ -97,7 +97,7 @@ export default function ProceedOtp() {
 
                             {/* ================= Proceed Button ================= */}
                             <Link
-                                to="/verify-otp"
+                                to="/personal-information"
                                 className="box-border flex h-[53px] w-[510px] shrink-0 items-center justify-center gap-[15px] rounded-[5px] border border-[rgba(0,0,0,0.2)] bg-[rgba(172,62,37,1)] px-[24px] py-[14px] text-white transition-all duration-500 ease-out hover:scale-[1.02] hover:bg-[rgba(150,52,30,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(172,62,37,0.4)]"
                             >
                                 <span className="h-[24px] w-[67px] font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] tracking-[0%] text-[rgba(255,255,255,1)]">
@@ -119,7 +119,7 @@ export default function ProceedOtp() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Facebook"
-                                    className="inline-flex h-[22px] w-[9.9233px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 active:scale-100"
+                                    className="inline-flex h-[22px] w-[9.9233px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
                                     <img
                                         src="/facebook.png"
@@ -134,7 +134,7 @@ export default function ProceedOtp() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Twitter"
-                                    className="ml-[40.0367px] inline-flex h-[22px] w-[22px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 active:scale-100"
+                                    className="ml-[40.0367px] inline-flex h-[22px] w-[22px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
                                     <img
                                         src="/twitter.png"
@@ -149,7 +149,7 @@ export default function ProceedOtp() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Instagram"
-                                    className="ml-[40px] inline-flex h-[22px] w-[22px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 active:scale-100"
+                                    className="ml-[40px] inline-flex h-[22px] w-[22px] items-center justify-center transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
                                     <img
                                         src="/instagram.png"

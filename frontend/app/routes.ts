@@ -49,7 +49,7 @@ export default [
 
         // Client Personal Information
         route(
-            "client/personal-information",
+            "personal-information",
             "./routes/ClientPersonalInformation.tsx"
         ),
 
@@ -133,10 +133,15 @@ export default [
 
     ]),
 
-    // Client Portal
+    // ================= Client Portal =================
     route(
         "client-portal",
-        "./routes/Clientportallogin.tsx"
+        "./routes/Clientportallogin.tsx",
+        [
+            index(
+                "./routes/ClientProfile.tsx"
+            ),
+        ]
     ),
 
     // Agent Portal Profile

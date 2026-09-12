@@ -6,7 +6,7 @@ const blogRoutes = require("./routes/blogRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const authRoutes = require("./routes/authRoutes");
 const agentRoutes = require("./routes/agentRoutes");
-
+const clientRoutes = require("./routes/clientRoutes");
 const app = express();
 
 // ==============================
@@ -70,5 +70,5 @@ app.use("/api/auth", authRoutes);
 // ==============================
 
 app.use("/api/agent", agentRoutes);
-
+app.use("/api/client", clientRoutes);
 module.exports = app;

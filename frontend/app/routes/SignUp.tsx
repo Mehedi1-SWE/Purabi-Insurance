@@ -1,10 +1,94 @@
-
-
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 import InsuranceCarousel from "../../components/InsuranceCarousel";
 
+type SignUpFormData = {
+    mobileNumber: string;
+};
+
 export default function SignUp() {
+    const navigate = useNavigate();
+
+    const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors, isSubmitting },
+    } = useForm<SignUpFormData>({
+        defaultValues: {
+            mobileNumber: "",
+        },
+    });
+
+    const handleSendOtp = async (formData: SignUpFormData) => {
+        try {
+            const cleanMobileNumber =
+                formData.mobileNumber.trim();
+
+            /*
+             * Since +880 is already displayed separately,
+             * user only enters 10 digits:
+             *
+             * 1758685869
+             *
+             * Backend will receive:
+             *
+             * 01758685869
+             */
+            if (!/^1\d{9}$/.test(cleanMobileNumber)) {
+                setError("mobileNumber", {
+                    type: "manual",
+                    message:
+                        "Please enter a valid 10-digit mobile number.",
+                });
+
+                return;
+            }
+
+            const fullMobileNumber = `0${cleanMobileNumber}`;
+
+            const response = await fetch(
+                "http://localhost:5000/api/client/send-otp",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        mobileNumber: fullMobileNumber,
+                    }),
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(
+                    data.message || "Unable to send OTP."
+                );
+            }
+
+            // Save mobile number for Verify OTP page
+            localStorage.setItem(
+                "clientMobileNumber",
+                fullMobileNumber
+            );
+
+            // Go to Verify OTP page
+            navigate("/verify-otp");
+        } catch (error) {
+            console.error("Send OTP error:", error);
+
+            setError("mobileNumber", {
+                type: "manual",
+                message:
+                    error instanceof Error
+                        ? error.message
+                        : "Unable to connect to server. Please try again.",
+            });
+        }
+    };
+
     return (
         <div className="h-[676px] w-[1300px] opacity-100">
 
@@ -44,7 +128,10 @@ export default function SignUp() {
                     <div className="flex h-[387px] w-[520px] flex-col gap-[30px] opacity-100">
 
                         {/* ================= 1st Inner Layout ================= */}
-                        <div className="flex h-[263px] w-[520px] flex-col gap-[30px] opacity-100">
+                        <form
+                            onSubmit={handleSubmit(handleSendOtp)}
+                            className="flex h-[263px] w-[520px] flex-col gap-[30px] opacity-100"
+                        >
 
                             {/* ================= Mobile Number Layout ================= */}
                             <div className="flex h-[64px] w-[520px] shrink-0 opacity-100">
@@ -61,23 +148,58 @@ export default function SignUp() {
                                 {/* ================= Mobile Number Input Layout ================= */}
                                 <div className="box-border flex h-[64px] w-[438px] shrink-0 items-center gap-[10px] rounded-r-[5px] border border-[rgba(172,62,37,0.2)] bg-[rgba(68,68,68,0.05)] px-[20px] py-[20px]">
 
-                                    <p className="h-[24px] w-[207px] text-center font-['Poppins'] text-[16px] font-normal capitalize leading-[100%] tracking-[0%] text-[rgba(0,0,0,1)]">
-                                        Enter Your Mobile number
-                                    </p>
+                                    <input
+                                        type="tel"
+                                        inputMode="numeric"
+                                        maxLength={10}
+                                        placeholder="Enter Your Mobile number"
+                                        autoComplete="tel"
+                                        {...register("mobileNumber", {
+                                            required:
+                                                "Mobile number is required.",
+
+                                            pattern: {
+                                                value: /^1\d{9}$/,
+                                                message:
+                                                    "Please enter a valid 10-digit mobile number.",
+                                            },
+
+                                            onChange: (event) => {
+                                                const value =
+                                                    event.target.value
+                                                        .replace(/\D/g, "")
+                                                        .slice(0, 10);
+
+                                                event.target.value =
+                                                    value;
+                                            },
+                                        })}
+                                        className="h-[24px] w-full bg-transparent font-['Poppins'] text-[16px] font-normal capitalize leading-[100%] tracking-[0%] text-black outline-none placeholder:text-black"
+                                    />
 
                                 </div>
 
                             </div>
 
+                            {/* ================= Mobile Error ================= */}
+                            {errors.mobileNumber && (
+                                <p className="-mt-[20px] font-['Poppins'] text-[12px] font-normal text-red-500">
+                                    {errors.mobileNumber.message}
+                                </p>
+                            )}
+
                             {/* ================= Send OTP ================= */}
-                            <Link
-                                to="/verify-otp"
-                                className="box-border flex h-[53px] w-[510px] shrink-0 items-center justify-center gap-[15px] rounded-[5px] border border-[rgba(0,0,0,0.2)] bg-[rgba(172,62,37,1)] px-[24px] py-[14px] text-white transition-all duration-500 ease-out hover:scale-[1.02] hover:bg-[rgba(150,52,30,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(172,62,37,0.4)]"
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="box-border flex h-[53px] w-[510px] shrink-0 items-center justify-center gap-[15px] rounded-[5px] border border-[rgba(0,0,0,0.2)] bg-[rgba(172,62,37,1)] px-[24px] py-[14px] text-white transition-all duration-500 ease-out hover:scale-[1.02] hover:bg-[rgba(150,52,30,1)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(172,62,37,0.4)]"
                             >
-                                <span className="h-[24px] w-[77px] font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] tracking-[0%] text-[rgba(255,255,255,1)]">
-                                    Send OTP
+                                <span className="h-[24px] font-['Poppins'] text-[16px] font-medium capitalize leading-[100%] tracking-[0%] text-[rgba(255,255,255,1)]">
+                                    {isSubmitting
+                                        ? "Sending..."
+                                        : "Send OTP"}
                                 </span>
-                            </Link>
+                            </button>
 
                             {/* ================= OR ================= */}
                             <div className="flex h-[14px] w-[520px] shrink-0 items-center gap-[20px] opacity-100">
@@ -99,27 +221,37 @@ export default function SignUp() {
 
                             {/* ================= Continue with Google ================= */}
                             <a
-                                href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent("http://localhost:5173/auth/google/callback")}&response_type=code&scope=${encodeURIComponent("openid email profile")}&access_type=offline&prompt=select_account`}
+                                href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(
+                                    "http://localhost:5173/auth/google/callback"
+                                )}&response_type=code&scope=${encodeURIComponent(
+                                    "openid email profile"
+                                )}&access_type=offline&prompt=select_account`}
                                 className="flex h-[52px] w-[520px] shrink-0 opacity-100"
                             >
+
                                 {/* Google Icon */}
                                 <div className="box-border flex h-[52px] w-[64px] shrink-0 items-center gap-[10px] rounded-l-[5px] border-l-[0.5px] border-t-[0.5px] border-b-[0.5px] border-[rgba(66,133,244,1)] bg-white px-[20px] py-[14px] opacity-100">
+
                                     <img
                                         src="/Google Logo.png"
                                         alt="Google"
                                         className="h-[24px] w-[24px] shrink-0 object-contain opacity-100"
                                     />
+
                                 </div>
 
                                 {/* Continue with Google */}
                                 <div className="box-border flex h-[52px] w-[456px] shrink-0 items-center justify-center gap-[10px] rounded-r-[5px] border border-[rgba(172,62,37,0.2)] bg-[rgba(66,133,244,1)] px-[20px] py-[14px] opacity-100 transition-all duration-300 ease-out hover:scale-[1.01] hover:brightness-105 hover:shadow-[0_8px_20px_rgba(66,133,244,0.25)] active:scale-[0.99]">
+
                                     <p className="h-[24px] w-[175px] shrink-0 text-center font-['Poppins'] text-[16px] font-normal capitalize leading-[100%] tracking-[0%] text-[rgba(255,255,255,1)]">
                                         Continue with Google
                                     </p>
+
                                 </div>
+
                             </a>
 
-                        </div>
+                        </form>
 
                         {/* ================= Social + Terms ================= */}
                         <div className="flex h-[84px] w-[510px] shrink-0 flex-col gap-[20px] opacity-100">
@@ -135,11 +267,13 @@ export default function SignUp() {
                                     aria-label="Facebook"
                                     className="absolute left-0 top-[1px] flex h-[19.845px] w-[9.9233px] items-center justify-center opacity-100 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
+
                                     <img
                                         src="/facebook.png"
                                         alt=""
                                         className="block h-[19.845px] w-[9.9233px] object-contain"
                                     />
+
                                 </a>
 
                                 {/* Twitter */}
@@ -150,11 +284,13 @@ export default function SignUp() {
                                     aria-label="Twitter"
                                     className="absolute left-[49.96px] top-[2px] flex h-[17.875px] w-[22px] items-center justify-center opacity-100 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
+
                                     <img
                                         src="/twitter.png"
                                         alt=""
                                         className="block h-[17.875px] w-[22px] object-contain"
                                     />
+
                                 </a>
 
                                 {/* Instagram */}
@@ -165,46 +301,60 @@ export default function SignUp() {
                                     aria-label="Instagram"
                                     className="absolute left-[112px] top-0 flex h-[22px] w-[22px] items-center justify-center opacity-100 transition-all duration-300 ease-out hover:-translate-y-[2px] hover:scale-125 hover:brightness-110 hover:drop-shadow-[0_4px_10px_rgba(172,62,37,0.35)] active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#AC3E25]/30"
                                 >
+
                                     <img
                                         src="/instagram.png"
                                         alt=""
                                         className="block h-[22px] w-[22px] object-contain"
                                     />
+
                                 </a>
 
                             </div>
 
                             {/* ================= Terms & Privacy ================= */}
                             <div className="h-[42px] w-[510px] shrink-0 opacity-100">
+
                                 <div className="flex h-[42px] w-[510px] flex-col items-center justify-center gap-[6px] font-['Poppins'] text-[14px] font-light leading-[14px] tracking-[0%] text-[rgba(0,0,0,1)]">
 
                                     <div className="h-[14px] w-[510px] whitespace-nowrap text-center">
+
                                         By Creating An Account Or Logging In, You Agree To{" "}
+
                                         <Link
                                             to="/terms-of-service"
                                             className="font-['Poppins'] text-[14px] font-bold leading-[14px] tracking-[0%] text-[rgba(172,62,37,1)] underline decoration-solid underline-offset-0 transition-all duration-300 ease-out hover:text-[#7A2114]"
                                         >
                                             Our Terms Of Service
                                         </Link>
+
                                     </div>
 
                                     <div className="h-[14px] w-[510px] whitespace-nowrap text-center">
+
                                         And{" "}
+
                                         <Link
                                             to="/privacy-policy"
                                             className="font-['Poppins'] text-[14px] font-bold leading-[14px] tracking-[0%] text-[rgba(172,62,37,1)] underline decoration-solid underline-offset-0 transition-all duration-300 ease-out hover:text-[#7A2114]"
                                         >
                                             Privacy Policy.
                                         </Link>
+
                                     </div>
 
                                 </div>
+
                             </div>
 
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     );
 }

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -66,7 +67,7 @@ export default function AdminLogin() {
 
     return (
         <div
-            className="w-[1280px] h-[750px] rounded-[30px] p-[20px] gap-[20px]  bg-[linear-gradient(0deg,rgba(172,62,37,0.1),rgba(172,62,37,0.1)),linear-gradient(0deg,#FFFFFF,#FFFFFF)]">
+            className="w-[1280px] h-[750px] rounded-[30px] p-[20px] gap-[20px] bg-[linear-gradient(0deg,rgba(172,62,37,0.1),rgba(172,62,37,0.1)),linear-gradient(0deg,#FFFFFF,#FFFFFF)]">
 
             {/* Main Layout */}
 

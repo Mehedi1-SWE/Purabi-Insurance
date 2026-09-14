@@ -54,7 +54,7 @@ export default function AdminDashboard() {
     <div className="relative box-border min-h-screen w-[1440px] min-w-[1280px] max-w-[1920px] overflow-hidden bg-white">
 
       {/* Top Bar */}
-      <div className="box-border flex h-[35px] w-[1440px] items-center justify-between bg-[rgba(172,62,37,1)] px-[80px] py-[8px]">
+      <div className="box-border flex h-[37px] w-[1440px] items-center justify-between bg-[rgba(172,62,37,1)] px-[80px] py-[8px]">
         <div className="flex h-[18px] w-[640px] shrink-0 items-center gap-[10px]">
           <div className="flex h-[18px] w-[407px] shrink-0 items-center gap-[10px]">
             <img src="/Vector (3).png" alt="" className="h-[12px] w-[9px] shrink-0 object-contain" />
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Admin Navbar */}
-      <nav className="box-border flex h-[50px] w-[1440px] items-center border-b border-[rgba(171,61,36,0.5)] bg-white px-[20px] py-[8px]">
+      <nav className="box-border flex h-[51px] w-[1440px] items-center border-b border-[rgba(171,61,36,0.5)] bg-white px-[20px] py-[8px]">
 
         {/* Logo */}
         <div className="flex h-[36px] w-[184.3504px] shrink-0 items-center justify-center bg-[rgba(171,61,37,1)]">
@@ -268,16 +268,16 @@ export default function AdminDashboard() {
 
 
       {/* Outlet */}
-      <div className="relative box-border min-h-[760px] w-[1440px] overflow-hidden bg-[linear-gradient(0deg,rgba(172,62,37,0.1),rgba(172,62,37,0.1)),linear-gradient(0deg,#FFFFFF,#FFFFFF)] font-['Poppins']">
+      <div className="relative box-border min-h-[800px] w-[1440px] overflow-hidden bg-[linear-gradient(0deg,rgba(172,62,37,0.1),rgba(172,62,37,0.1)),linear-gradient(0deg,#FFFFFF,#FFFFFF)] font-['Poppins']">
 
         {/* ================================================== */}
         {/* Left Sidebar */}
         {/* ================================================== */}
 
-        <aside className="absolute left-0 top-0 box-border flex h-[760px] w-[240px] cursor-pointer flex-col bg-[#AC3E25] px-[14px] py-[14px] shadow-[6px_0_18px_rgba(89,31,18,0.14)]">
+        <aside className="absolute left-0 top-0 box-border flex h-[800px] w-[240px] cursor-pointer flex-col bg-[#AC3E25] px-[14px] py-[14px] shadow-[6px_0_18px_rgba(89,31,18,0.14)]">
 
           {/* Menu */}
-          <div className="flex flex-col gap-[2px]">
+          <div className="flex flex-col gap-[1px]">
 
             {/* Dashboard */}
             <div className="flex h-[44px] w-full items-center rounded-[9px]  px-[14px] text-white transition-all duration-200 hover:bg-[#963521]">
@@ -350,7 +350,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Bottom Promo */}
-          <div className="mt-auto h-[190px] w-full overflow-hidden rounded-[12px] shadow-[0_8px_20px_rgba(70,20,10,0.20)]">
+          <div className="mt-auto h-[210px] w-full overflow-hidden rounded-[12px] shadow-[0_8px_20px_rgba(70,20,10,0.20)]">
             <img src="/Umbrella.jpg" alt="Together for a Safer Tomorrow" className="h-full w-full object-cover" />
           </div>
 
@@ -361,13 +361,13 @@ export default function AdminDashboard() {
         {/* Main Dashboard */}
         {/* ================================================== */}
 
-        <main className="absolute left-[240px] top-0 box-border h-[760px] w-[1200px] overflow-hidden px-[20px] py-[14px]">
+        <main className="absolute left-[240px] top-0 box-border h-[760px] w-[1200px] overflow-visible px-[20px] py-[14px]">
 
           {/* ================================================== */}
           {/* 1st Layout → Welcome */}
           {/* ================================================== */}
 
-          <section className="relative h-[92px] w-[1160px] overflow-hidden rounded-[10px] bg-cover bg-center bg-no-repeat px-[26px] py-[14px]"
+          <section className="relative h-[102px] w-[1160px] overflow-hidden rounded-[10px] bg-cover bg-center bg-no-repeat px-[26px] py-[14px]"
             style={{ backgroundImage: "url('/Backgroundadmin.png')" }}>
 
 
@@ -399,10 +399,10 @@ export default function AdminDashboard() {
           {/* 4 Stat Cards */}
           {/* ================================================== */}
 
-          <section className="mt-[10px] flex h-[102px] w-[1160px] gap-[10px]">
+          <section className="mt-[12px] flex h-[104px] w-[1160px] gap-[10px]">
 
             {/* Total Customers */}
-            <div className="box-border flex h-[102px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
+            <div className="box-border flex h-[104px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
               <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-[#AC3E25]">
                 <svg className="h-[36px] w-[36px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="8" r="2.5" /><path d="M16 14c2.8.4 5 2.8 5 6" /></svg>
               </div>
@@ -417,7 +417,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Active Policies */}
-            <div className="box-border flex h-[102px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
+            <div className="box-border flex h-[104px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
               <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-[#AC3E25]">
                 <svg className="h-[36px] w-[36px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 8h6M9 12h6M9 16h4" /></svg>
               </div>
@@ -432,7 +432,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Pending Claims */}
-            <div className="box-border flex h-[102px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
+            <div className="box-border flex h-[104px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
               <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-[#AC3E25]">
                 <svg className="h-[36px] w-[36px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 20 6v5c0 5.2-3.3 8.7-8 10-4.7-1.3-8-4.8-8-10V6l8-3Z" /><path d="m9 12 2 2 4-4" /></svg>
               </div>
@@ -447,7 +447,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Total Revenue */}
-            <div className="box-border flex h-[102px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
+            <div className="box-border flex h-[104px] w-[285px] items-center rounded-[10px] border border-[#F1ECE9] bg-white px-[20px] shadow-[0_3px_12px_rgba(60,30,20,0.05)]">
               <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full bg-[#AC3E25]">
                 <svg className="h-[36px] w-[36px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 20V10M12 20V4M19 20v-7" /></svg>
               </div>
@@ -535,12 +535,12 @@ export default function AdminDashboard() {
           {/* Customer Support + Recent Activities */}
           {/* ================================================== */}
 
-          <section className="mt-[10px] flex h-[244px] w-[1160px] gap-[10px]">
+          <section className="mt-[10px] flex h-[500px] w-[1160px] gap-[10px]">
 
             {/* Customer Support */}
-            <div className="group box-border h-[287px] w-[820px] cursor-pointer rounded-[10px] border border-[#F1ECE9] bg-white px-[16px] py-[12px] shadow-[0_3px_12px_rgba(60,30,20,0.05)] transition-all duration-300 hover:-translate-y-[1px] hover:border-[#E7C2B7] hover:shadow-[0_8px_24px_rgba(60,30,20,0.10)]">
+            <div className="group box-border h-[327px] w-[850px] overflow-visible cursor-pointer rounded-[10px] border border-[#F1ECE9] bg-white px-[16px] py-[12px] shadow-[0_3px_12px_rgba(60,30,20,0.05)] transition-all duration-300 hover:-translate-y-[1px] hover:border-[#E7C2B7] hover:shadow-[0_8px_24px_rgba(60,30,20,0.10)]">
 
-              <div className="flex h-[45px] items-start justify-between">
+              <div className="flex h-[55px] items-start justify-between">
 
                 <div className="flex items-start gap-[12px]">
                   <div className="mt-[-1px] flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[9px] bg-[linear-gradient(135deg,#FFF2ED,#FFE5DC)] text-[#C43620] shadow-[0_4px_12px_rgba(172,62,37,0.10)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_16px_rgba(172,62,37,0.16)]"><svg className="h-[19px] w-[19px] text-[#C43620]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 5h16v12H7l-3 3V5Z" /><circle cx="8" cy="11" r="1" /><circle cx="12" cy="11" r="1" /><circle cx="16" cy="11" r="1" /></svg></div>
@@ -557,29 +557,29 @@ export default function AdminDashboard() {
 
               </div>
 
-              <div className="mt-[6px] overflow-hidden rounded-[8px] border border-[#EEF1F4] bg-white shadow-[0_2px_8px_rgba(16,42,76,0.03)]">
+              <div className="mt-[6px] overflow-visible rounded-[8px] border border-[#EEF1F4] bg-white shadow-[0_2px_8px_rgba(16,42,76,0.03)]">
 
-                <div className="grid h-[34px] grid-cols-[42px_118px_128px_128px_110px_1fr_92px_50px] items-center bg-[linear-gradient(90deg,#F8FAFC,#F7F8FA)] px-[7px]">
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">#</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Name</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Email</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Phone</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Subject</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Message (Preview)</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Date</span>
-                  <span className="font-poppins text-[11px] font-semibold text-[#102A4C]">Action</span>
+                <div className="grid h-[38px] grid-cols-[42px_118px_128px_128px_110px_1fr_92px_50px] items-center bg-[linear-gradient(90deg,#F8FAFC,#F7F8FA)] px-[7px]">
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">#</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Name</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Email</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Phone</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Subject</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Message (Preview)</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Date</span>
+                  <span className="font-poppins text-[13px] font-semibold text-[#102A4C]">Action</span>
                 </div>
 
                 {supportMessages.map((item) => (
-                  <div key={item.id} className="group/row grid h-[34px] cursor-pointer grid-cols-[42px_118px_128px_128px_110px_1fr_92px_50px] items-center border-t border-[#EEF1F4] px-[7px] transition-all duration-200 hover:bg-[#FFF9F6] hover:shadow-[inset_3px_0_0_#AC3E25]">
+                  <div key={item.id} className="group/row grid h-[38px] cursor-pointer grid-cols-[42px_118px_128px_128px_110px_1fr_92px_50px] items-center border-t border-[#EEF1F4] px-[7px] transition-all duration-200 hover:bg-[#FFF9F6] hover:shadow-[inset_3px_0_0_#AC3E25]">
                     <span className="font-poppins text-[10px] text-[#526174]">{item.id}</span>
-                    <span className="truncate font-poppins text-[10px] font-medium text-[#102A4C]">{item.name}</span>
-                    <span className="truncate font-poppins text-[10px] text-[#526174]">{item.email}</span>
-                    <span className="truncate font-poppins text-[10px] text-[#526174]">{item.phone}</span>
-                    <span className={`w-fit cursor-pointer rounded-[5px] px-[8px] py-[4px] font-poppins text-[9px] font-medium shadow-[0_2px_6px_rgba(15,23,42,0.05)] transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.03] hover:shadow-[0_4px_10px_rgba(15,23,42,0.10)] ${item.subjectClass}`}>{item.subject}</span>
-                    <span className="truncate font-poppins text-[10px] text-[#526174]">{item.message}</span>
-                    <span className="font-poppins text-[10px] text-[#526174]">{item.date}</span>
-                    <button className="h-[28px] w-[42px] cursor-pointer rounded-[5px] bg-[#AC3E25] font-poppins text-[10px] font-medium text-white shadow-[0_3px_8px_rgba(172,62,37,0.18)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-[#96351F] hover:shadow-[0_5px_12px_rgba(172,62,37,0.24)] active:translate-y-0">View</button>
+                    <span className="truncate font-poppins text-[12px] font-medium text-[#102A4C]">{item.name}</span>
+                    <span className="truncate font-poppins text-[12px] text-[#526174]">{item.email}</span>
+                    <span className="truncate font-poppins text-[12px] text-[#526174]">{item.phone}</span>
+                    <span className={`w-fit cursor-pointer rounded-[12px] px-[8px] py-[4px] font-poppins text-[9px] font-medium shadow-[0_2px_6px_rgba(15,23,42,0.05)] transition-all duration-200 hover:-translate-y-[1px] hover:scale-[1.03] hover:shadow-[0_4px_10px_rgba(15,23,42,0.10)] ${item.subjectClass}`}>{item.subject}</span>
+                    <span className="truncate font-poppins text-[12px] text-[#526174]">{item.message}</span>
+                    <span className="font-poppins text-[12px] text-[#526174]">{item.date}</span>
+                    <button className="h-[28px] w-[42px] cursor-pointer rounded-[5px] bg-[#AC3E25] font-poppins text-[12px] font-medium text-white shadow-[0_3px_8px_rgba(172,62,37,0.18)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-[#96351F] hover:shadow-[0_5px_12px_rgba(172,62,37,0.24)] active:translate-y-0">View</button>
                   </div>
                 ))}
 
@@ -589,7 +589,7 @@ export default function AdminDashboard() {
 
 
             {/* Right Column */}
-            <div className="flex h-[288px] w-[330px] flex-col gap-[10px]">
+            <div className="flex h-[326px] w-[330px] flex-col gap-[10px]">
 
               {/* Banner */}
               <div className="group/banner relative h-[100px] w-full cursor-pointer overflow-hidden rounded-[10px] bg-[#AC3E25] bg-cover bg-center bg-no-repeat shadow-[0_5px_16px_rgba(60,30,20,0.10)] transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[0_9px_22px_rgba(60,30,20,0.16)]" style={{ backgroundImage: "url('/Umbrella.jpg')" }}>
@@ -620,34 +620,34 @@ export default function AdminDashboard() {
 
                   </div>
 
-                  <button className="flex items-center gap-[6px] font-poppins text-[11px] font-medium text-[#C43620]">
+                  <button className="flex items-center gap-[6px] font-poppins text-[13px] font-medium text-[#C43620]">
                     View All
                     <svg className="h-[13px] w-[13px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </button>
 
                 </div>
 
-                <div className="mt-[5px] flex flex-col">
+                <div className="mt-[5opx] flex flex-col">
 
                   {activities.map((activity, index) => (
-                    <div key={index} className="group/activity-row flex h-[24px] cursor-pointer items-center rounded-[7px] border-b border-[#EEF1F4] transition-all duration-200 hover:bg-[#FFF9F6] hover:px-[4px]">
+                    <div key={index} className="group/activity-row flex h-[28px] cursor-pointer items-center rounded-[7px] border-b border-[#EEF1F4] transition-all duration-200 hover:bg-[#FFF9F6] hover:px-[4px]">
 
                       <div className={`flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full ${activity.bg} shadow-[0_3px_9px_rgba(15,23,42,0.08)] ring-1 ring-white transition-all duration-200 group-hover/activity-row:scale-105 group-hover/activity-row:shadow-[0_5px_12px_rgba(15,23,42,0.12)]`}>
 
-                        {activity.icon === "document" && <svg className="h-[17px] w-[17px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 8h6M9 12h6M9 16h4" /></svg>}
+                        {activity.icon === "document" && <svg className="h-[18px] w-[18px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 8h6M9 12h6M9 16h4" /></svg>}
 
-                        {activity.icon === "edit" && <svg className="h-[17px] w-[17px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m4 16 9.5-9.5a2.1 2.1 0 0 1 3 3L7 22H3v-4l1-2Z" /></svg>}
+                        {activity.icon === "edit" && <svg className="h-[18px] w-[18px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m4 16 9.5-9.5a2.1 2.1 0 0 1 3 3L7 22H3v-4l1-2Z" /></svg>}
 
-                        {activity.icon === "more" && <svg className="h-[17px] w-[17px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="18" cy="12" r="1.5" /></svg>}
+                        {activity.icon === "more" && <svg className="h-[18px] w-[18px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="18" cy="12" r="1.5" /></svg>}
 
-                        {activity.icon === "users" && <svg className="h-[17px] w-[17px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="8" r="2.5" /></svg>}
+                        {activity.icon === "users" && <svg className="h-[18px] w-[18px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="8" r="2.5" /></svg>}
 
-                        {activity.icon === "shield" && <svg className="h-[17px] w-[17px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 20 6v5c0 5.2-3.3 8.7-8 10-4.7-1.3-8-4.8-8-10V6l8-3Z" /><path d="m9 12 2 2 4-4" /></svg>}
+                        {activity.icon === "shield" && <svg className="h-[18px] w-[18px]" style={{ color: activity.color }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 20 6v5c0 5.2-3.3 8.7-8 10-4.7-1.3-8-4.8-8-10V6l8-3Z" /><path d="m9 12 2 2 4-4" /></svg>}
 
                       </div>
 
                       <div className="ml-[10px] min-w-0 flex-1">
-                        <p className="truncate font-poppins text-[10px] font-medium text-[#102A4C]">{activity.title}</p>
+                        <p className="truncate font-poppins text-[13px] font-medium text-[#102A4C]">{activity.title}</p>
                         <p className="font-poppins text-[9px] text-[#64748B]">{activity.time}</p>
                       </div>
 
@@ -667,7 +667,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Footer */}
-      <footer className="box-border flex h-[47px] w-[1440px] items-center border-t border-[#E8D8D2] bg-[#FFFDFC] px-[20px] py-[8px]">
+      <footer className="box-border flex h-[60px] w-[1440px] items-center border-t border-[#E8D8D2] bg-[#FFF9F6] px-[20px] py-[8px]">
 
         {/* Main Footer Content */}
         <div className="flex flex-1">
@@ -678,12 +678,12 @@ export default function AdminDashboard() {
         <div className="flex h-[10px] w-full items-center justify-between">
 
           {/* Left - Copyright */}
-          <p className="font-['Poppins'] text-[13px] font-normal leading-[100%] text-[#777777]">
+          <p className="font-['Poppins'] text-[14px] font-normal leading-[100%] text-[#777777]">
             Copyright © 360D Soul Limited 2025. All rights reserved.
           </p>
 
           {/* Center - Main Navigation */}
-          <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-[14px] font-['Poppins'] text-[13px] font-normal leading-[100%] text-[#3F3F3F]">
+          <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-[14px] font-['Poppins'] text-[14px] font-normal leading-[100%] text-[#3F3F3F]">
 
             <a
               href="/"
@@ -713,7 +713,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Right - Legal Navigation */}
-          <div className="mr-[40px] flex items-center gap-[14px] font-['Poppins'] text-[13px] font-normal leading-[100%] text-[#3F3F3F]">
+          <div className="mr-[40px] flex items-center gap-[14px] font-['Poppins'] text-[14px] font-normal leading-[100%] text-[#3F3F3F]">
 
             <a
               href="/privacy-policy"

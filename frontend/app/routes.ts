@@ -23,6 +23,12 @@ export default [
             "./routes/Quote.tsx"
         ),
 
+        // Health Insurance Plans
+        route(
+            "health-plans",
+            "./routes/HealthPlans.tsx"
+        ),
+
         // Agent Portal
         route(
             "agent-portal",
@@ -134,6 +140,7 @@ export default [
     ]),
 
     // ================= Client Portal =================
+
     route(
         "client-portal",
         "./routes/Clientportallogin.tsx",

@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function PriceCalculator() {
+    const navigate = useNavigate();
+
     const [selectedCategory, setSelectedCategory] = useState("Health");
+    const [name, setName] = useState("");
+    const [mobile, setMobile] = useState("");
 
     const categories = [
         { name: "Health", image: "/Health.png", width: "w-[100px]" },
@@ -13,6 +17,20 @@ export default function PriceCalculator() {
         { name: "Engineering", image: "/Engineering.png", width: "w-[108px]" },
         { name: "More", image: "/More.png", width: "w-[100px]" },
     ];
+
+    const handleGetPrice = () => {
+        if (!name.trim() || !mobile.trim()) {
+            return;
+        }
+
+        navigate("/quote", {
+            state: {
+                name,
+                mobile,
+                category: selectedCategory,
+            },
+        });
+    };
 
     return (
         <section className="box-border flex h-[487.7104px] w-[1440px] min-w-[1280px] max-w-[1920px] flex-col gap-[10px] bg-[#F7ECEA] px-[80px] py-[100px]">
@@ -60,6 +78,8 @@ export default function PriceCalculator() {
                             id="name"
                             type="text"
                             name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             placeholder="Enter Your Full Name"
                             className="box-border h-[57px] w-[424.182px] rounded-[5px] border border-[#0000001A] bg-white px-[24px] font-[Poppins] text-[18px] font-normal italic leading-[100%] text-black outline-none placeholder:text-[#44444480] focus:border-[#AC3E25]"
                         />
@@ -80,6 +100,8 @@ export default function PriceCalculator() {
                             id="mobile"
                             type="tel"
                             name="mobile"
+                            value={mobile}
+                            onChange={(e) => setMobile(e.target.value)}
                             placeholder="Enter Your Valid Phone Number"
                             className="box-border h-[57px] w-[424.182px] rounded-[5px] border border-[#0000001A] bg-white px-[24px] font-[Poppins] text-[18px] font-normal italic leading-[100%] text-black outline-none placeholder:text-[#44444480] focus:border-[#AC3E25]"
                         />
@@ -89,8 +111,9 @@ export default function PriceCalculator() {
                     {/* Child Layout 3 */}
                     <div className="flex h-[105.7104px] w-[242.8px] shrink-0 items-start pt-[48.71px]">
 
-                        <Link
-                            to="/health-insurance"
+                        <button
+                            type="button"
+                            onClick={handleGetPrice}
                             className="box-border flex h-[57px] w-[242.8px] shrink-0 items-center justify-between gap-[15.71px] rounded-[5px] border border-[#AC3E2533] bg-[#AC3E25] px-[30px] py-[15px] font-[Poppins] text-white transition-colors duration-200 hover:bg-[#922F1C]"
                         >
                             <span className="text-[18px] font-normal leading-[100%]">
@@ -113,7 +136,7 @@ export default function PriceCalculator() {
                                     />
                                 </svg>
                             </span>
-                        </Link>
+                        </button>
 
                     </div>
 
